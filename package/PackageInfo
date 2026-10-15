@@ -1,0 +1,24 @@
+name			powermac
+version			0.1.0-12
+architecture	x86_64
+summary			"Emulator of the Power Macintosh 9500/180MP"
+description		"PowerMac emulates Apple's Power Macintosh 9500 (models 9500/120 to the dual processor 9500/180MP) at the hardware level, running the Mac's own ROM and Open Firmware: two PowerPC 604e processors, the Grand Central I/O controller, both SCSI buses (MESH and 53C94) with hard disks and a CD-ROM drive, the ADB keyboard and mouse through Cuda, AWACS sound, the SuperDrive floppy (400 KB and 800 KB GCR, 720 KB and 1.44 MB MFM; raw, Disk Copy 4.2 and compressed Disk Copy 6 images), MACE Ethernet on a private network (NAT), the serial ports and an IMS Twin Turbo 128 video card driven by its own ROM. It runs Mac OS 7.6.1 from CD or disk images, and BeOS R5 for the Macintosh on both processors. Disks are raw or thin provisioned QCOW2 images; Haiku folders can be shared with Mac OS (HFS, resource forks kept in attributes) or BeOS (BFS) as disks. Machine profiles keep several setups to switch between. The Mac's ROM and the video card's ROM are not included: you need images of your own."
+packager		"The BeBox and PowerMac emulator authors"
+vendor			"The BeBox and PowerMac emulator authors"
+copyrights		"2026 The BeBox and PowerMac emulator authors"
+licenses		"MIT"
+
+# No "flags system_package": HaikuDepot shows no Install/Uninstall button for
+# system packages.
+
+provides {
+	powermac = 0.1.0
+	app:PowerMac = 0.1.0
+	cmd:powermac_img = 0.1.0
+	cmd:powermac_headless = 0.1.0
+}
+
+requires {
+	haiku >= r1~beta6
+	lib:libslirp
+}
